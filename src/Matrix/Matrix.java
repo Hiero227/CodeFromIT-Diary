@@ -1,35 +1,36 @@
 import java.util.Random;
 
 public class Matrix {
-	String matrix="";
-	String matrix2="";
-	String matresult="";
-	int m1;
-	int m2;
-	int counter = 0;
-
-	public Matrix() {
-
-	}
-
-	public String MatrixAdd() {
-		for(int i=1;i<10;i++) {
-			Random r = new Random();
-			Random r2 = new Random();
-			m1 = r.nextInt(10);
-			m2 = r2.nextInt(10);
-		    matrix = matrix+m1+" ";
-		    matrix2 = matrix2+m2+" ";
-		    matresult =matresult+(m1+m2)+" ";
-		    if(counter==2||counter==5) {
-		    	matrix +="\n";
-		    	matrix2 +="\n";
-		    	matresult +="\n";
+	String baseMatrix="";		//First matrix
+	String additionMatrix="";	//Matrix that will be added to First matrix (variable name = baseMatrix)
+	String sumMatrix="";										//Result matrix
+	
+	
+	
+	public String MatrixAdd() { 								//Function that will generate matrices
+		Random r = new Random();								//Random number generator initialized
+		int generated;											//Variable that will hold a generated number from Random generator
+		int temp;												//Variable that will hold a sum of two generated numbers								
+		for(int i = 1 ; i < 10 ; i++) {							//For loop
+			generated = r.nextInt(10);							//First number from Random class is assigned to generated variable
+			temp = generated;									//First random generated number is assigned to temp variable
+		    baseMatrix += generated + " ";						//First number is added to baseMatrix
+		    generated = r.nextInt(10);							//Second number from Random class is assigned to generated variable
+		    temp += generated;									//Second random generated number is added to temp variable
+		    additionMatrix = additionMatrix + generated + " ";	//Second number is added to additionMatrix
+		    sumMatrix += temp + " ";							//Sum of two previously generated numbers is added to sumMatrix
+		    if(i==3||i==6) {									//Checking if current number that was generated is on the end of a row
+		    	baseMatrix +="\n";								//
+		    	additionMatrix +="\n";							//   Simulating enter or end of the row
+		    	sumMatrix +="\n";								//
 		    }
-		    counter ++;
+		    
 		}
-		
-		
-		return "The first generated matrix: "+"\n"+matrix+"\n"+"plus the second generated matrix: "+"\n"+matrix2+"\n"+"Equals this matrix: "+"\n"+matresult;
-	}
+		return "The first generated matrix: "+"\n"+baseMatrix+"\n"+"plus the second generated matrix: "+"\n"+additionMatrix+"\n"+"Equals this matrix: "+"\n"+sumMatrix;
+				//Output
+	}	
+	
+	
+	
+	
 }

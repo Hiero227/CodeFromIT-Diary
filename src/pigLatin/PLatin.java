@@ -1,25 +1,29 @@
-package pigLatin;
 
 import java.util.Scanner;
 
 public class PLatin {
-	String input = "";
-	int j;
-	Scanner sc = new Scanner(System.in);
-	String cinput;
-	String temp;
-
-	void pLconvert() {
-		input = sc.nextLine();
-		String[] str = new String[input.length()];
-		for (int i = 0; i < input.length(); i++) {
-			str = input.split("\\s");
-
-			temp = str[i].substring(0, 1);
-			str[i] += temp + "ay";
-			str[i] = str[i].substring(1);
-			System.out.println(str[i]);
+	Scanner sc = new Scanner(System.in); 							//Initializing a Input class
+	String vowels = "aeyiou";										//List of vowels for later use
+	
+	public void pLconvert() {										//Method that will convert a String typed from keyboard to PigLatin
+		String input = sc.nextLine();								//Typing a word into a String
+		String output = "";											//Declaring output variable
+			
+		if(vowels.contains(Character.toString(input.charAt(0)))) {	//Asking if first letter of input is vowel
+			output = (Vowel(input));								//If it is a vowel then it is calling a Vowel method (21.row)
+		}else {														
+			output = (Consonant(input));							//If the first letter isn't vowel then it is calling Consonant method (26.row)
 		}
-
+		
+		System.out.println(output);									//Printing converted String to console
 	}
+	
+	private String Vowel(String in) {								//Method that will convert String with vowel as first letter into PigLatin
+		return in.substring(1,in.length()) + in.charAt(0) + "hay";	//This makes from input string (for example: string) piglatin string (tring + s + hay)
+	}
+	
+	private String Consonant(String in) {							//Method that will convert String with consonant as first letter into PigLatin
+		return in.substring(1,in.length()) + in.charAt(0) + "ay";	//This makes from input string (for example: string) piglatin string (tring + s + ay)
+	}
+
 }
