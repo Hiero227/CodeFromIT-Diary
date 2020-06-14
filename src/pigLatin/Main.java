@@ -1,4 +1,3 @@
-package pigLatin;
 
 public class Main {
 
